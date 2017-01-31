@@ -3,8 +3,8 @@ class TouristGuide::Scraping
 
   def scrape_index_page(direction_name)
     scraped_directions =[]
-    binding.pry
-    html = open("#{HOME_PAGE}/en/search?q=#{direction_name}&region=8&sort=2&page=1")
+    direction_name = direction_name.downcase
+   html = open("#{HOME_PAGE}/en/search?q=#{direction_name}&region=8&sort=2&page=1")
     scraped_page = Nokogiri::HTML(html)
     array = scraped_page.css("div.single-search-result")
     array.each do |category|
